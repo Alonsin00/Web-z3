@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casi 3 meses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Quicksand&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-size: 1.2em;
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(to bottom, #6a1b9a, #9c27b0);
+      color: white;
+      text-align: center;
+    }
+
+    .nubes {
+      display: grid;
+      grid-template-columns: repeat(4, auto); /* 4 columnas */
+      gap: 12px 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .nube {
+      background: #ffffff30;
+      padding: 12px 24px;
+      border-radius: 20px;
+      color: white;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      font-size: 1.1em;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .nube:hover {
+      background: #c77dff80;
+    }
+
+    h1 {
+      margin: 60px 0 20px;
+      font-size: 3em;
+      font-weight: 700;
+    }
+
+    .heart-container {
+      margin-top: 30px;
+      width: 120px;
+      height: 110px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.1);
+      }
+      50% {
+        transform: scale(0.95);
+      }
+      75% {
+        transform: scale(1.05);
+      }
+    }
+
+    svg.heart-svg {
+      width: 100%;
+      height: 100%;
+      fill: #c77dff;
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+    }
+
+    .heart-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: white;
+      font-family: 'Great Vibes', cursive;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: 3px;
+    }
+
+    .contador, .regresiva {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+    .teamo-btn {
+      background: #f06292;
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-size: 1.1em;
+      margin-top: 30px;
+      cursor: pointer;
+      font-family: 'Dancing Script', cursive;
+      transition: background-color 0.3s ease;
+    }
+
+    .teamo-btn:hover {
+      background-color: #ec407a;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.85em;
+      color: #eee;
+      font-family: 'Quicksand', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nubes">
+    <div class="nube">Hermosa</div>
+    <div class="nube">Cariñosa</div>
+    <div class="nube">Amorosa</div>
+    <div class="nube">Mi vida</div>
+    <div class="nube">Inteligente</div>
+    <div class="nube">Increíble</div>
+    <div class="nube">Única</div>
+    <div class="nube">Te amo</div>
+  </div>
+
+  <h1>¡Casi 3 meses juntos!</h1>
+
+  <div class="heart-container" title="A + M para siempre">
+    <svg class="heart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 
+      4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 
+      19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+    <div class="heart-text">A + M</div>
+  </div>
+
+  <div class="contador" id="contador">Calculando...</div>
+  <div class="regresiva" id="regresiva">Calculando...</div>
+
+  <button class="teamo-btn" onclick="mostrarCorazones()">Te amo</button>
+
+  <footer>Hecho con cariño por Alonsin00</footer>
+
+  <script>
+    const inicio = new Date("2025-02-28T00:00:00");
+    const meta = new Date("2025-05-28T00:00:00");
+
+    function actualizaContadores() {
+      const ahora = new Date();
+      const diff = ahora - inicio;
+      const horas = Math.floor(diff / (1000 * 60 * 60));
+      document.getElementById("contador").textContent = Llevamos ${horas} horas juntos.;
+
+      const restante = meta - ahora;
+      if (restante > 0) {
+        const dias = Math.floor(restante / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((restante / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((restante / (1000 * 60)) % 60);
+        const segundos = Math.floor((restante / 1000) % 60);
+        document.getElementById("regresiva").textContent = Faltan ${dias}d ${horas}h ${minutos}m ${segundos}s para los 3 meses.;
+      } else {
+        document.getElementById("regresiva").textContent = "¡Ya cumplimos 3 meses!";
+      }
+    }
+
+    setInterval(actualizaContadores, 1000);
+    actualizaContadores();
+
+    function mostrarCorazones() {
+      alert("Te amo mucho, A + M para siempre.");
+    }
+  </script>
+
+</body>
+</html>
