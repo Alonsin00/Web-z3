@@ -14,14 +14,54 @@
       background: linear-gradient(to bottom, #6a1b9a, #9c27b0);
       color: white;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    .floating-hearts::before,
+    .floating-hearts::after {
+      content: "❤";
+      position: fixed;
+      font-size: 20px;
+      opacity: 0.2;
+      animation: floatHeart 10s linear infinite;
+      color: white;
+    }
+
+    .floating-hearts::after {
+      content: "❤";
+      left: 20%;
+      top: 100%;
+      animation-delay: 3s;
+      font-size: 24px;
+    }
+
+    .floating-hearts::before {
+      left: 80%;
+      top: 100%;
+      animation-delay: 0s;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-150vh) scale(1.5);
+        opacity: 0;
+      }
     }
 
     .nubes {
       display: grid;
-      grid-template-columns: repeat(4, auto); /* 4 columnas */
+      grid-template-columns: repeat(4, auto);
       gap: 12px 20px;
       justify-content: center;
       margin-top: 30px;
+      padding: 0 10px;
     }
 
     .nube {
@@ -121,9 +161,23 @@
       color: #eee;
       font-family: 'Quicksand', sans-serif;
     }
+
+    @media screen and (max-width: 600px) {
+      .nubes {
+        grid-template-columns: repeat(2, auto);
+      }
+
+      h1 {
+        font-size: 2.3em;
+      }
+
+      .heart-container {
+        transform: scale(0.8);
+      }
+    }
   </style>
 </head>
-<body>
+<body class="floating-hearts">
 
   <div class="nubes">
     <div class="nube">Hermosa</div>
