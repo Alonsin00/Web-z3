@@ -104,6 +104,7 @@
     cursor: pointer;
     position: relative;
     z-index: 1;
+    overflow: visible; /* Para que animación no quede cortada */
   }
   .sobre-inner {
     width: 100%;
@@ -134,7 +135,7 @@
     user-select: none;
   }
   .sobre-back {
-    background: #ff4da680; /* rosa con transparencia */
+    background: #ff4da680;
     border: 1px solid rgba(255, 77, 166, 0.7);
     backdrop-filter: blur(8px);
     color: white;
@@ -216,6 +217,30 @@
       opacity: 0;
     }
   }
+
+  /* Animación de corazones que salen del mensaje */
+  .corazon-emergente {
+    position: absolute;
+    font-size: 18px;
+    color: #ffb6c1;
+    animation: subirCorazon 2s ease forwards;
+    pointer-events: none;
+    user-select: none;
+  }
+  @keyframes subirCorazon {
+    0% {
+      opacity: 0;
+      transform: translate(0, 0) scale(0.5);
+    }
+    30% {
+      opacity: 1;
+      transform: translate(calc(var(--dx, 0) * 20px), -30px) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(calc(var(--dx, 0) * 40px), -120px) scale(1.2);
+    }
+  }
 </style>
 </head>
 <body>
@@ -279,6 +304,30 @@
     setTimeout(() => {
       sobre.classList.remove("romantico");
     }, 1200);
+
+    // Animación de corazones rosas que salen del mensaje
+    if (sobre.classList.contains("abierto")) {
+      lanzarCorazones();
+    }
+  }
+
+  function lanzarCorazones() {
+    const sobre = document.getElementById("sobre");
+    const cantidad = 20;
+    for(let i = 0; i < cantidad; i++) {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon-emergente");
+      // Posición relativa al sobre
+      corazon.style.left = (sobre.offsetWidth/2 + (Math.random() - 0.5) * 80) + "px";
+      corazon.style.top = (sobre.offsetHeight / 2 + (Math.random() - 0.5) * 40) + "px";
+      corazon.style.setProperty("--dx", (Math.random() - 0.5).toFixed(2));
+      sobre.appendChild(corazon);
+      corazon.textContent = "💗";
+      // Quitar después de animación
+      setTimeout(() => {
+        corazon.remove();
+      }, 2000);
+    }
   }
 
   function obtenerHoraPeru() {
@@ -312,7 +361,7 @@
   actualizaContadores();
 
   // Crear muchos corazones flotando en el fondo
-  const corazonCount = 60;
+  const corazonCount = 120;
   const corazonesFondo = document.getElementById("corazones-fondo");
 
   for (let i = 0; i < corazonCount; i++) {
