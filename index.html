@@ -18,8 +18,6 @@
     position: relative;
   }
 
-  /* ... (los estilos para los corazones flotantes y nubes, etc., los mantengo iguales) ... */
-
   .nubes {
     display: grid;
     grid-template-columns: repeat(4, auto);
@@ -108,7 +106,6 @@
     z-index: 1;
   }
 
-  /* Estilos para el sobre con giro 3D */
   .sobre {
     width: 320px;
     height: 200px;
@@ -131,7 +128,6 @@
     transform: rotateX(-180deg);
   }
 
-  /* Cara frontal del sobre */
   .sobre-front, .sobre-back {
     position: absolute;
     width: 100%;
@@ -152,7 +148,6 @@
     user-select: none;
   }
 
-  /* Cara trasera con el mensaje */
   .sobre-back {
     background: rgba(255,255,255,0.1);
     color: white;
@@ -164,7 +159,6 @@
     overflow-y: auto;
   }
 
-  /* Scroll si mensaje largo */
   .sobre-back::-webkit-scrollbar {
     width: 6px;
   }
@@ -172,7 +166,7 @@
     background: #c77dff99;
     border-radius: 3px;
   }
-  
+
   @media screen and (max-width: 768px) {
     .nubes {
       grid-template-columns: repeat(2, auto);
@@ -218,7 +212,6 @@
   <div class="contador" id="contador">Calculando...</div>
   <div class="regresiva" id="regresiva">Calculando...</div>
 
-  <!-- Sobre interactivo con giro -->
   <div class="sobre" id="sobre" onclick="toggleSobre()">
     <div class="sobre-inner">
       <div class="sobre-front">
@@ -259,7 +252,7 @@
     const ahora = obtenerHoraPeru();
     const diff = ahora - inicio;
     const horas = Math.floor(diff / (1000 * 60 * 60));
-    document.getElementById("contador").textContent = Llevamos ${horas} horas juntos.;
+    document.getElementById("contador").textContent = `Llevamos ${horas} horas juntos.`;
 
     const restante = meta - ahora;
     if (restante > 0) {
@@ -267,7 +260,7 @@
       const horas = Math.floor((restante / (1000 * 60 * 60)) % 24);
       const minutos = Math.floor((restante / (1000 * 60)) % 60);
       const segundos = Math.floor((restante / 1000) % 60);
-      document.getElementById("regresiva").textContent = Faltan ${dias}d ${horas}h ${minutos}m ${segundos}s para los 3 meses.;
+      document.getElementById("regresiva").textContent = `Faltan ${dias}d ${horas}h ${minutos}m ${segundos}s para los 3 meses.`;
     } else {
       document.getElementById("regresiva").textContent = "¡Ya cumplimos 3 meses!";
     }
@@ -276,5 +269,56 @@
   setInterval(actualizaContadores, 1000);
   actualizaContadores();
 </script>
+  <div class="corazones-fondo" id="corazones-fondo"></div>
+
+<script>
+  // Crear corazones animados
+  function crearCorazon() {
+    const corazon = document.createElement('div');
+    corazon.classList.add('corazon');
+    corazon.style.left = Math.random() * 100 + 'vw';
+    corazon.style.animationDuration = 2 + Math.random() * 3 + 's';
+    corazon.style.opacity = Math.random();
+    corazon.style.fontSize = (12 + Math.random() * 24) + 'px';
+    document.getElementById('corazones-fondo').appendChild(corazon);
+
+    setTimeout(() => {
+      corazon.remove();
+    }, 5000); // se remueve después de caer
+  }
+
+  setInterval(crearCorazon, 300);
+</script>
+
+<style>
+  .corazones-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0; /* detrás de todo */
+  }
+
+  .corazon {
+    position: absolute;
+    top: -20px;
+    color: #ffb3ec;
+    animation-name: flotar;
+    animation-timing-function: linear;
+  }
+
+  @keyframes flotar {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+</style>
+
 </body>
 </html>
