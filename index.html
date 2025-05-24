@@ -134,9 +134,9 @@
     user-select: none;
   }
   .sobre-back {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(6px);
+    background: #ff4da680; /* rosa con transparencia */
+    border: 1px solid rgba(255, 77, 166, 0.7);
+    backdrop-filter: blur(8px);
     color: white;
     padding: 20px;
     font-family: 'Quicksand', sans-serif;
@@ -144,6 +144,7 @@
     white-space: pre-line;
     transform: rotateX(180deg);
     overflow-y: auto;
+    transition: transform 0.3s ease;
   }
   .sobre-back::-webkit-scrollbar {
     width: 6px;
@@ -152,6 +153,26 @@
     background: #c77dff99;
     border-radius: 3px;
   }
+
+  /* Animación romántica para el sobre */
+  .sobre.romantico {
+    animation: latidoBrillo 1.2s ease forwards;
+  }
+  @keyframes latidoBrillo {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(199, 125, 255, 0);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(199, 125, 255, 0.7);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(199, 125, 255, 0);
+    }
+  }
+
   @media screen and (max-width: 768px) {
     .nubes {
       grid-template-columns: repeat(2, auto);
@@ -165,6 +186,7 @@
       height: 180px;
     }
   }
+
   /* Corazones animados de fondo */
   .corazones-fondo {
     position: fixed;
@@ -182,19 +204,23 @@
     color: #ffc0cb;
     animation-name: flotar;
     animation-timing-function: linear;
+    user-select: none;
   }
   @keyframes flotar {
     0% {
       transform: translateY(0) rotate(0deg);
+      opacity: 1;
     }
     100% {
       transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
     }
   }
 </style>
 </head>
 <body>
   <div class="corazones-fondo" id="corazones-fondo"></div>
+
   <div class="nubes">
     <div class="nube">Hermosa</div>
     <div class="nube">Cariñosa</div>
@@ -205,7 +231,9 @@
     <div class="nube">Única</div>
     <div class="nube">Te amo</div>
   </div>
+
   <h1>¡Casi 3 meses juntos!</h1>
+
   <div class="heart-container">
     <svg class="heart-svg" viewBox="0 0 24 24">
       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 
@@ -216,11 +244,15 @@
     </svg>
     <div class="heart-text">A + M</div>
   </div>
+
   <div class="contador" id="contador">Calculando...</div>
   <div class="regresiva" id="regresiva">Calculando...</div>
+
   <div class="sobre" id="sobre" onclick="toggleSobre()">
     <div class="sobre-inner">
-      <div class="sobre-front">Sobre</div>
+      <div class="sobre-front">
+        Sobre
+      </div>
       <div class="sobre-back">
         No sabía cómo empezar esto, porque a veces siento que no puedo demostrarte todo el cariño que te tengo.
 
@@ -234,24 +266,36 @@
       </div>
     </div>
   </div>
+
   <footer>Hecho con cariño por Alonsin00</footer>
+
 <script>
   function toggleSobre() {
     const sobre = document.getElementById("sobre");
     sobre.classList.toggle("abierto");
+
+    // Animación romántica al abrir/cerrar
+    sobre.classList.add("romantico");
+    setTimeout(() => {
+      sobre.classList.remove("romantico");
+    }, 1200);
   }
+
   function obtenerHoraPeru() {
     const ahora = new Date();
     const utc = ahora.getTime() + (ahora.getTimezoneOffset() * 60000);
     return new Date(utc - (5 * 60 * 60 * 1000));
   }
+
   const inicio = new Date("2025-02-28T00:00:00-05:00");
   const meta = new Date("2025-05-28T00:00:00-05:00");
+
   function actualizaContadores() {
     const ahora = obtenerHoraPeru();
     const diff = ahora - inicio;
     const horas = Math.floor(diff / (1000 * 60 * 60));
     document.getElementById("contador").textContent = `Llevamos ${horas} horas juntos.`;
+
     const restante = meta - ahora;
     if (restante > 0) {
       const dias = Math.floor(restante / (1000 * 60 * 60 * 24));
@@ -263,23 +307,24 @@
       document.getElementById("regresiva").textContent = "¡Ya cumplimos 3 meses!";
     }
   }
+
   setInterval(actualizaContadores, 1000);
   actualizaContadores();
-  // Corazones animados en el fondo
-  function crearCorazon() {
-    const corazon = document.createElement('div');
-    corazon.classList.add('corazon');
-    corazon.textContent = '♥';
-    corazon.style.left = Math.random() * 100 + 'vw';
-    corazon.style.animationDuration = 2 + Math.random() * 3 + 's';
-    corazon.style.opacity = Math.random();
-    corazon.style.fontSize = (12 + Math.random() * 24) + 'px';
-    document.getElementById('corazones-fondo').appendChild(corazon);
-    setTimeout(() => {
-      corazon.remove();
-    }, 5000);
+
+  // Crear muchos corazones flotando en el fondo
+  const corazonCount = 60;
+  const corazonesFondo = document.getElementById("corazones-fondo");
+
+  for (let i = 0; i < corazonCount; i++) {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (10 + Math.random() * 25) + "px";
+    corazon.style.animationDuration = (7 + Math.random() * 8) + "s";
+    corazon.style.animationDelay = (Math.random() * 15) + "s";
+    corazon.textContent = "❤️";
+    corazonesFondo.appendChild(corazon);
   }
-  setInterval(crearCorazon, 300);
 </script>
 </body>
 </html>
