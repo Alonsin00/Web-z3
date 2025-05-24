@@ -272,3 +272,43 @@
     <div class="nube">Única</div>
     <div class="nube">Te amo</div>
   </
+<!-- Carta interactiva con botón -->
+<div id="carta-container" style="margin-top: 60px; z-index:1; position: relative;">
+  <div id="sobre" style="width: 280px; height: 180px; margin: auto; background: #f8bbd0; border-radius: 10px; position: relative; box-shadow: 0 0 10px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.5s ease;">
+    <div style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); font-family: 'Dancing Script', cursive; font-size: 1.5em; color: #6a1b9a;">
+      Dale click aquí
+    </div>
+  </div>
+  <div id="mensaje-carta" style="display: none; margin-top: 20px; background: #ffffff30; padding: 20px; border-radius: 12px; max-width: 90%; margin-left: auto; margin-right: auto; font-size: 1.1em; font-family: 'Quicksand', sans-serif;">
+    No sabía cómo empezar esto, porque a veces siento que no puedo demostrarte todo el cariño que te tengo.<br><br>
+    Estos casi tres meses han sido de los más bonitos de mi vida, eres una persona increíble y cada día que pasa me doy cuenta de lo afortunado que soy por tenerte a mi lado.<br><br>
+    A veces me pongo nervioso o me cuesta expresarme, pero quiero que sepas que cada detallito que haces, cada mensaje, cada mirada... todo eso me hace muy feliz.<br><br>
+    Prometo seguir esforzándome y hacerte sentir tan especial como tú me haces sentir a mí.<br><br>
+    Te amo mucho, más de lo que puedo demostrarte.
+  </div>
+</div>
+
+<script>
+  document.getElementById("sobre").addEventListener("click", function () {
+    this.style.display = "none";
+    document.getElementById("mensaje-carta").style.display = "block";
+  });
+</script>
+
+<!-- Agregar corazones al fondo -->
+<script>
+  for (let i = 0; i < 80; i++) {
+    const span = document.createElement("span");
+    span.innerHTML = "❤";
+    span.style.position = "absolute";
+    span.style.color = "white";
+    span.style.opacity = "0.1";
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.top = 100 + Math.random() * 20 + "vh";
+    span.style.fontSize = 14 + Math.random() * 10 + "px";
+    span.style.animation = "floatHeart 12s linear infinite";
+    document.body.appendChild(span);
+  }
+</script>
+</body>
+</html>
