@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,187 +15,234 @@
       text-align: center;
       overflow-x: hidden;
       position: relative;
-    }
+    }.heart-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    .heart-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
+.heart-bg span {
+  position: absolute;
+  color: white;
+  opacity: 0.15;
+  font-size: 18px;
+  animation: floatHeart 12s linear infinite;
+}
 
-    .heart-bg span {
-      position: absolute;
-      color: white;
-      opacity: 0.15;
-      font-size: 18px;
-      animation: floatHeart 12s linear infinite;
-    }
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
 
-    @keyframes floatHeart {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.2;
-      }
-      50% {
-        opacity: 0.3;
-      }
-      100% {
-        transform: translateY(-120vh) scale(1.5);
-        opacity: 0;
-      }
-    }
+.nubes {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 12px 20px;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+}
 
-    .nubes {
-      display: grid;
-      grid-template-columns: repeat(4, auto);
-      gap: 12px 20px;
-      justify-content: center;
-      margin-top: 30px;
-      padding: 0 10px;
-      position: relative;
-      z-index: 1;
-    }
+.nube {
+  background: #ffffff30;
+  padding: 12px 24px;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
 
-    .nube {
-      background: #ffffff30;
-      padding: 12px 24px;
-      border-radius: 20px;
-      color: white;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 600;
-      font-size: 1.1em;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
+.nube:hover {
+  background: #c77dff80;
+}
 
-    .nube:hover {
-      background: #c77dff80;
-    }
+h1 {
+  margin: 60px 0 20px;
+  font-size: 3em;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
 
-    h1 {
-      margin: 60px 0 20px;
-      font-size: 3em;
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
-    }
+.heart-container {
+  margin-top: 30px;
+  width: 120px;
+  height: 110px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  animation: heartbeat 1.4s ease-in-out infinite;
+  transform-origin: center;
+  z-index: 1;
+}
 
-    .heart-container {
-      margin-top: 30px;
-      width: 120px;
-      height: 110px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      animation: heartbeat 1.4s ease-in-out infinite;
-      transform-origin: center;
-      z-index: 1;
-    }
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+}
 
-    @keyframes heartbeat {
-      0%, 100% {
-        transform: scale(1);
-      }
-      25% {
-        transform: scale(1.1);
-      }
-      50% {
-        transform: scale(0.95);
-      }
-      75% {
-        transform: scale(1.05);
-      }
-    }
+svg.heart-svg {
+  width: 100%;
+  height: 100%;
+  fill: #c77dff;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+}
 
-    svg.heart-svg {
-      width: 100%;
-      height: 100%;
-      fill: #c77dff;
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
-    }
+.heart-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: white;
+  font-family: 'Great Vibes', cursive;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: 3px;
+}
 
-    .heart-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 24px;
-      color: white;
-      font-family: 'Great Vibes', cursive;
-      user-select: none;
-      pointer-events: none;
-      white-space: nowrap;
-      letter-spacing: 3px;
-    }
+.contador, .regresiva {
+  margin-top: 20px;
+  font-size: 1.2em;
+  z-index: 1;
+  position: relative;
+}
 
-    .contador, .regresiva {
-      margin-top: 20px;
-      font-size: 1.2em;
-      z-index: 1;
-      position: relative;
-    }
+.teamo-btn {
+  background: #f06292;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 1.1em;
+  margin-top: 30px;
+  cursor: pointer;
+  font-family: 'Dancing Script', cursive;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+  position: relative;
+}
 
-    .teamo-btn {
-      background: #f06292;
-      border: none;
-      color: white;
-      padding: 10px 25px;
-      border-radius: 30px;
-      font-size: 1.1em;
-      margin-top: 30px;
-      cursor: pointer;
-      font-family: 'Dancing Script', cursive;
-      transition: background-color 0.3s ease;
-      z-index: 1;
-      position: relative;
-    }
+.teamo-btn:hover {
+  background-color: #ec407a;
+}
 
-    .teamo-btn:hover {
-      background-color: #ec407a;
-    }
+.carta-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  position: relative;
+}
 
-    footer {
-      margin-top: 50px;
-      font-size: 0.85em;
-      color: #eee;
-      font-family: 'Quicksand', sans-serif;
-      position: relative;
-      z-index: 1;
-    }
+.sobre {
+  width: 280px;
+  height: 200px;
+  background: #fff;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  font-family: 'Quicksand', sans-serif;
+}
 
-    @media screen and (max-width: 768px) {
-      .nubes {
-        grid-template-columns: repeat(2, auto);
-      }
+.tapa {
+  width: 100%;
+  height: 100%;
+  background: #f8bbd0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top;
+  transition: transform 0.6s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
 
-      h1 {
-        font-size: 2.3em;
-      }
+.tapa.abierta {
+  transform: rotateX(-180deg);
+}
 
-      .heart-container {
-        transform: scale(0.9);
-      }
+.mensaje {
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  font-size: 1em;
+}
 
-      .heart-text {
-        font-size: 20px;
-      }
+.mensaje.visible {
+  opacity: 1;
+}
 
-      body {
-        font-size: 1em;
-      }
-    }
+footer {
+  margin-top: 50px;
+  font-size: 0.85em;
+  color: #eee;
+  font-family: 'Quicksand', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .nubes {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  h1 {
+    font-size: 2.3em;
+  }
+
+  .heart-container {
+    transform: scale(0.9);
+  }
+
+  .heart-text {
+    font-size: 20px;
+  }
+
+  body {
+    font-size: 1em;
+  }
+}
+
   </style>
 </head>
 <body>
-  <!-- fondo de corazones -->
   <div class="heart-bg">
-    <!-- genera muchos corazones flotantes -->
     <script>
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 100; i++) {
         const span = document.createElement("span");
         span.innerHTML = "❤";
         span.style.left = Math.random() * 100 + "vw";
@@ -206,9 +252,7 @@
         document.querySelector(".heart-bg").appendChild(span);
       }
     </script>
-  </div>
-
-  <div class="nubes">
+  </div>  <div class="nubes">
     <div class="nube">Hermosa</div>
     <div class="nube">Cariñosa</div>
     <div class="nube">Amorosa</div>
@@ -217,29 +261,30 @@
     <div class="nube">Increíble</div>
     <div class="nube">Única</div>
     <div class="nube">Te amo</div>
-  </div>
-
-  <h1>¡Casi 3 meses juntos!</h1>
-
-  <div class="heart-container" title="A + M para siempre">
+  </div>  <h1>¡Casi 3 meses juntos!</h1>  <div class="heart-container" title="A + M para siempre">
     <svg class="heart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 
       4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 
       19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
     </svg>
     <div class="heart-text">A + M</div>
-  </div>
+  </div>  <div class="contador" id="contador">Calculando...</div>
+  <div class="regresiva" id="regresiva">Calculando...</div>  <div class="carta-container">
+    <div class="sobre">
+      <div class="tapa" onclick="abrirCarta(this)">Dale click aquí</div>
+      <div class="mensaje" id="mensajeCarta">
+        No sabía cómo empezar esto, porque a veces siento que no puedo demostrarte todo el cariño que te tengo.<br><br>
+        Estos casi tres meses han sido de los más bonitos de mi vida, eres una persona increíble y cada día que pasa me doy cuenta de lo afortunado que soy por tenerte a mi lado.<br><br>
+        A veces me pongo nervioso o me cuesta expresarme, pero quiero que sepas que cada detallito que haces, cada mensaje, cada mirada, todo eso me hace muy feliz.<br><br>
+        Prometo seguir esforzándome y hacerte sentir tan especial como tú me haces sentir a mí.<br>
+        Te amo mucho, más de lo que puedo demostrarte.
+      </div>
+    </div>
+  </div><button class="teamo-btn" onclick="mostrarCorazones()">Te amo</button>
 
-  <div class="contador" id="contador">Calculando...</div>
-  <div class="regresiva" id="regresiva">Calculando...</div>
-
-  <button class="teamo-btn" onclick="mostrarCorazones()">Te amo</button>
-
-  <footer>Hecho con cariño por Alonsin00</footer>
-
-  <script>
-    const inicio = new Date("2025-02-28T00:00:00");
-    const meta = new Date("2025-05-28T00:00:00");
+  <footer>Hecho con cariño por Alonsin00</footer>  <script>
+    const inicio = new Date("2025-02-28T00:00:00-05:00");
+    const meta = new Date("2025-05-28T00:00:00-05:00");
 
     function actualizaContadores() {
       const ahora = new Date();
@@ -265,6 +310,10 @@
     function mostrarCorazones() {
       alert("Te amo mucho, A + M para siempre.");
     }
-  </script>
-</body>
+
+    function abrirCarta(elemento) {
+      elemento.classList.add("abierta");
+      document.getElementById("mensajeCarta").classList.add("visible");
+    }
+  </script></body>
 </html>
