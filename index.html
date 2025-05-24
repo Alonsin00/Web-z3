@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Casi 3 meses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Casi 3 meses juntos</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Quicksand&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -17,17 +17,14 @@
       overflow-x: hidden;
       position: relative;
     }
-
     .heart-bg {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
       z-index: 0;
     }
-
     .heart-bg span {
       position: absolute;
       color: white;
@@ -35,7 +32,6 @@
       font-size: 18px;
       animation: floatHeart 12s linear infinite;
     }
-
     @keyframes floatHeart {
       0% {
         transform: translateY(0) scale(1);
@@ -49,7 +45,6 @@
         opacity: 0;
       }
     }
-
     .nubes {
       display: grid;
       grid-template-columns: repeat(4, auto);
@@ -60,7 +55,6 @@
       position: relative;
       z-index: 1;
     }
-
     .nube {
       background: #ffffff30;
       padding: 12px 24px;
@@ -72,11 +66,9 @@
       text-align: center;
       transition: background-color 0.3s ease;
     }
-
     .nube:hover {
       background: #c77dff80;
     }
-
     h1 {
       margin: 60px 0 20px;
       font-size: 3em;
@@ -84,7 +76,6 @@
       position: relative;
       z-index: 1;
     }
-
     .heart-container {
       margin-top: 30px;
       width: 120px;
@@ -96,7 +87,6 @@
       transform-origin: center;
       z-index: 1;
     }
-
     @keyframes heartbeat {
       0%, 100% {
         transform: scale(1);
@@ -111,14 +101,12 @@
         transform: scale(1.05);
       }
     }
-
     svg.heart-svg {
       width: 100%;
       height: 100%;
       fill: #c77dff;
       filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
     }
-
     .heart-text {
       position: absolute;
       top: 50%;
@@ -132,92 +120,75 @@
       white-space: nowrap;
       letter-spacing: 3px;
     }
-
     .contador, .regresiva {
       margin-top: 20px;
-      font-size: 1.3em;
+      font-size: 1.2em;
       z-index: 1;
       position: relative;
-      font-family: 'Quicksand', sans-serif;
     }
-
     /* Carta interactiva */
-
     #sobre {
-      width: 280px;
+      width: 300px;
       height: 180px;
       margin: 40px auto 0;
+      perspective: 1000px;
       position: relative;
-      perspective: 800px;
-      cursor: pointer;
       z-index: 1;
     }
-
     #sobre-inner {
       width: 100%;
       height: 100%;
       position: relative;
-      transition: transform 0.7s;
+      transition: transform 1s;
       transform-style: preserve-3d;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      cursor: pointer;
       border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
     }
-
     #sobre.open #sobre-inner {
       transform: rotateY(180deg);
-      cursor: default;
     }
-
     .sobre-front, .sobre-back {
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: 15px;
       backface-visibility: hidden;
+      border-radius: 15px;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 15px;
       box-sizing: border-box;
-      color: white;
     }
-
     .sobre-front {
-      background: linear-gradient(135deg, #9c27b0, #6a1b9a);
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.4em;
-      font-weight: 700;
-      user-select: none;
-    }
-
-    .sobre-front button {
       background: #f06292;
-      border: none;
       color: white;
-      padding: 12px 30px;
+      font-family: 'Dancing Script', cursive;
+    }
+    .sobre-front button {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      font-size: 1.4em;
+      padding: 10px 20px;
       border-radius: 30px;
-      font-size: 1.2em;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      font-family: 'Dancing Script', cursive;
     }
-
     .sobre-front button:hover {
       background-color: #ec407a;
     }
-
     .sobre-back {
-      background: #3a0055cc;
-      transform: rotateY(180deg);
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.15em;
-      line-height: 1.5;
-      white-space: pre-line;
+      font-size: 1em;
+      line-height: 1.5em;
+      transform: rotateY(180deg);
       overflow-y: auto;
-      user-select: text;
-      color: #ffd9f4;
+      text-align: left;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
     }
-
     footer {
       margin-top: 50px;
       font-size: 0.85em;
@@ -226,67 +197,51 @@
       position: relative;
       z-index: 1;
     }
-
-    /* Responsive */
-
     @media screen and (max-width: 768px) {
       .nubes {
         grid-template-columns: repeat(2, auto);
       }
-
       h1 {
         font-size: 2.3em;
       }
-
       .heart-container {
         transform: scale(0.9);
       }
-
       .heart-text {
         font-size: 20px;
       }
-
       body {
         font-size: 1em;
       }
-
-      .contador, .regresiva {
-        font-size: 1.1em;
-      }
-
       #sobre {
         width: 90%;
-        height: auto;
-        max-height: 350px;
+        height: 220px;
       }
-
-      .sobre-front {
-        font-size: 1.2em;
-        padding: 20px 10px;
-      }
-
       .sobre-back {
-        font-size: 1em;
-        max-height: 320px;
+        font-size: 0.95em;
+      }
+      .nube {
+        font-size: 1.1em;
+        padding: 10px 16px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- fondo de corazones -->
-  <div class="heart-bg">
-    <script>
-      for (let i = 0; i < 70; i++) {
-        const span = document.createElement("span");
-        span.innerHTML = "❤";
-        span.style.left = Math.random() * 100 + "vw";
-        span.style.top = 100 + Math.random() * 20 + "vh";
-        span.style.fontSize = 14 + Math.random() * 10 + "px";
-        span.style.animationDuration = (8 + Math.random() * 5) + "s";
-        document.querySelector(".heart-bg").appendChild(span);
-      }
-    </script>
-  </div>
+  <div class="heart-bg"></div>
+
+  <script>
+    // Generar muchos corazones flotantes
+    for (let i = 0; i < 70; i++) {
+      const span = document.createElement("span");
+      span.innerHTML = "❤";
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.top = 100 + Math.random() * 20 + "vh";
+      span.style.fontSize = 14 + Math.random() * 10 + "px";
+      span.style.animationDuration = (8 + Math.random() * 5) + "s";
+      document.querySelector(".heart-bg").appendChild(span);
+    }
+  </script>
 
   <div class="nubes">
     <div class="nube">Hermosa</div>
@@ -302,87 +257,108 @@
   <h1>¡Casi 3 meses juntos!</h1>
 
   <div class="heart-container" title="A + M para siempre">
-    <svg class="heart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 
-      4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 
-      19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    <svg class="heart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+      2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09 
+      C13.09 3.81 14.76 3 16.5 3 
+      19.58 3 22 5.42 22 8.5 
+      c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
     </svg>
     <div class="heart-text">A + M</div>
   </div>
 
-  <div class="contador" id="contador">Calculando...</div>
-  <div class="regresiva" id="regresiva">Calculando...</div>
+  <div class="contador" id="contadorLlevamos"></div>
+  <div class="regresiva" id="contadorFaltan"></div>
 
   <!-- Carta interactiva -->
-  <div id="sobre" title="Carta para mi amor">
+  <div id="sobre" title="Haz clic para abrir/cerrar">
     <div id="sobre-inner">
       <div class="sobre-front">
-        <button id="btn-abrir-carta">Dale click aquí</button>
+        <button id="btnCarta">Abrir carta</button>
       </div>
-      <div class="sobre-back" id="mensaje-carta">
-No sabía cómo empezar esto, porque a veces siento que no puedo demostrarte todo el cariño que te tengo.
-
-Estos casi tres meses han sido de los más bonitos de mi vida eres una persona increíble y cada día que pasa me doy cuenta de lo afortunado que soy por tenerte a mi lado.
-
-A veces me pongo nervioso o me cuesta expresarme, pero quiero que sepas que cada detallito que haces, cada mensaje ,cada mirada todo eso me hace muy feliz.
-
-Prometo seguir esforzándome y hacerte sentir tan especial como tú me haces sentir a mí.
-Te amo mucho, más de lo que puedo demostrarte.
+      <div class="sobre-back">
+        <p>
+          No sabía cómo empezar esto, porque a veces siento que no puedo demostrarte todo el cariño que te tengo.<br><br>
+          Estos casi tres meses han sido de los más bonitos de mi vida eres una persona increíble y cada día que pasa me doy cuenta de lo afortunado que soy por tenerte a mi lado.<br><br>
+          A veces me pongo nervioso o me cuesta expresarme, pero quiero que sepas que cada detallito que haces, cada mensaje ,cada mirada todo eso me hace muy feliz.<br><br>
+          Prometo seguir esforzándome y hacerte sentir tan especial como tú me haces sentir a mí.<br>
+          Te amo mucho, más de lo que puedo demostrarte.
+        </p>
       </div>
     </div>
   </div>
 
-  <footer>Hecho con cariño por Alonsin00</footer>
+  <footer>Creado con cariño.</footer>
 
   <script>
-    // Función para obtener la fecha en hora Perú (UTC -5)
-    function getPeruNow() {
-      // Obtener fecha actual UTC en milisegundos
+    // Zona horaria Perú (GMT-5) sin DST
+    function getPeruTime() {
       const now = new Date();
-      // Offset de Perú en minutos (-5 horas = -300 min)
-      const peruOffset = -5 * 60;
-      // Obtener tiempo UTC en minutos
+      // UTC time
       const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-      // Ajustar a hora de Perú
-      return new Date(utc + (peruOffset * 60000));
+      // Perú GMT-5 offset (in milliseconds)
+      const peruOffset = -5 * 60 * 60000;
+      return new Date(utc + peruOffset);
     }
 
-    const inicio = new Date("2025-02-28T00:00:00-05:00");
-    const meta = new Date("2025-05-28T00:00:00-05:00");
+    // Fechas clave
+    const startDate = new Date(Date.UTC(2025, 1, 28, 0, 0, 0)); // 28 Feb 2025 00:00 UTC
+    const threeMonthsLater = new Date(Date.UTC(2025, 4, 28, 0, 0, 0)); // 28 May 2025 00:00 UTC
 
-    function actualizaContadores() {
-      const ahora = getPeruNow();
+    // Actualizar contadores
+    function actualizarContadores() {
+      const ahora = getPeruTime();
 
-      const diff = ahora - inicio;
-      const horas = Math.floor(diff / (1000 * 60 * 60));
-      document.getElementById("contador").textContent = Llevamos ${horas} horas juntos.;
+      // Tiempo transcurrido
+      let diffLlevamos = ahora - startDate;
+      if(diffLlevamos < 0) diffLlevamos = 0;
+      const dL = Math.floor(diffLlevamos / (1000*60*60*24));
+      const hL = Math.floor((diffLlevamos / (1000*60*60)) % 24);
+      const mL = Math.floor((diffLlevamos / (1000*60)) % 60);
+      const sL = Math.floor((diffLlevamos / 1000) % 60);
 
-      const restante = meta - ahora;
-      if (restante > 0) {
-        const dias = Math.floor(restante / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((restante / (1000 * 60 * 60)) % 24);
-        const minutos = Math.floor((restante / (1000 * 60)) % 60);
-        const segundos = Math.floor((restante / 1000) % 60);
-        document.getElementById("regresiva").textContent = Faltan ${dias}d ${horas}h ${minutos}m ${segundos}s para los 3 meses.;
+      document.getElementById('contadorLlevamos').textContent = 
+        Tiempo juntos: ${dL} días, ${hL} horas, ${mL} minutos y ${sL} segundos;
+
+      // Tiempo restante
+      let diffFaltan = threeMonthsLater - ahora;
+      if(diffFaltan < 0) diffFaltan = 0;
+      const dF = Math.floor(diffFaltan / (1000*60*60*24));
+      const hF = Math.floor((diffFaltan / (1000*60*60)) % 24);
+      const mF = Math.floor((diffFaltan / (1000*60)) % 60);
+      const sF = Math.floor((diffFaltan / 1000) % 60);
+
+      document.getElementById('contadorFaltan').textContent = 
+        Faltan: ${dF} días, ${hF} horas, ${mF} minutos y ${sF} segundos para los 3 meses;
+    }
+
+    setInterval(actualizarContadores, 1000);
+    actualizarContadores();
+
+    // Carta interactiva toggle
+    const sobre = document.getElementById('sobre');
+    const btnCarta = document.getElementById('btnCarta');
+    btnCarta.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if(sobre.classList.contains('open')){
+        sobre.classList.remove('open');
+        btnCarta.textContent = "Abrir carta";
       } else {
-        document.getElementById("regresiva").textContent = "¡Ya cumplimos 3 meses!";
+        sobre.classList.add('open');
+        btnCarta.textContent = "Cerrar carta";
       }
-    }
+    });
 
-    setInterval(actualizaContadores, 1000);
-    actualizaContadores();
-
-    // Control de la carta interactiva
-    const sobre = document.getElementById("sobre");
-    const btnAbrir = document.getElementById("btn-abrir-carta");
-
-    btnAbrir.addEventListener("click", () => {
-      if (sobre.classList.contains("open")) {
-        sobre.classList.remove("open");
-        btnAbrir.textContent = "Dale click aquí";
-      } else {
-        sobre.classList.add("open");
-        btnAbrir.textContent = "Cerrar carta";
+    // También toggle al clickear el área del sobre (pero no el botón)
+    sobre.addEventListener('click', (e) => {
+      if(e.target !== btnCarta){
+        if(sobre.classList.contains('open')){
+          sobre.classList.remove('open');
+          btnCarta.textContent = "Abrir carta";
+        } else {
+          sobre.classList.add('open');
+          btnCarta.textContent = "Cerrar carta";
+        }
       }
     });
   </script>
